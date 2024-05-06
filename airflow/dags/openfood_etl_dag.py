@@ -13,12 +13,14 @@ DEFAULT_ARGS = {
     'retry_delay': timedelta(minutes=2)
 }
 
+# Dag creation
 dag = DAG(
     dag_id='openfood_etl',
     default_args=DEFAULT_ARGS,
     schedule_interval='@daily'
 )
 
+# First extract task
 extract_task = PythonOperator(
     task_id = 'extract_data',
     python_callable=get_product_data,
@@ -26,10 +28,13 @@ extract_task = PythonOperator(
     dag=dag
 )
 
+# Transform task (that includes load too.)
 transform_task = PythonOperator(
     task_id = 'transform_data',
     python_callable=transform_data,
     dag=dag 
 )
+
+# Order and dependency of tasks
 
 extract_task >> transform_task

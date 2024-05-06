@@ -4,7 +4,8 @@ import os
 import json
 
 def connect_to_database():
-    """Establishes a connection to the PostgreSQL database."""
+    """Establishes a connection to the PostgreSQL database.
+    This was made to a separate file because I will use it multiple times. """
 
     load_dotenv()  
     conn = psycopg2.connect(
