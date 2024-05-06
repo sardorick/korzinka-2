@@ -39,15 +39,13 @@ Or you can use the database as set up using a cloud solution (Tendo).
 
 ## Running the ETL
 
-Start Airflow: In your project directory, initialize and start the Airflow webserver and scheduler. (airflow webserver & airflow scheduler)
+Start Airflow: In the project directory, initialize and start the Airflow webserver and scheduler. (airflow webserver & airflow scheduler)
 
 Access Airflow UI: Open the Airflow web interface (typically at http://localhost:8080) and unpause the 'openfood_etl' DAG.
 
-Manually Trigger (optional): If desired, you can manually trigger a DAG run.
-
 This ETL will extract the data from the Open Food Facts API (provided there is a database of barcodes in product_barcodes table, there is currently only one added for dev purposes). Then it transforms and loads it into the table nutritional_facts for each product.
 
-I have chosen to use Airflow for this project as well since it doesn't require paid tier and is the best suited for this ETL pipeline. It will also provide the capabilities of logging, error handling, and monitoring the performance of the pipelines (DAGs).
+I have chosen to use Airflow for this project as well since it is open sourced and is the best suited for this ETL pipeline. It will also provide the capabilities of logging, error handling, and monitoring the performance of the pipelines (DAGs).
 
 ## Database Table
 
